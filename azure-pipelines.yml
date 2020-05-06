@@ -35,6 +35,9 @@ steps:
   env:
     SWEAGLE_MAPPED_TOKEN: $(SWEAGLE_TOKEN)
 
+- script: 
+    sweagle -h
+
 #- script: |
 #    URL=$(sweagle export $(CDS) --exporter returnValueforKey --argsList $URL_TO_GET --format PROPS)
 #    FORMAT=$(echo "${URL##*.}")
