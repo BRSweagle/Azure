@@ -53,9 +53,9 @@ steps:
 #  displayName: 'Call URL to get file'
 
 #- script: |
-    echo "cpu=$CPU" >> ./result.$(FORMAT)
-    echo "ram=$RAM" >> ./result.$(FORMAT)
-  displayName: 'Fill template with pipeline variables'
+#    echo "cpu=$CPU" >> ./result.$(FORMAT)
+#    echo "ram=$RAM" >> ./result.$(FORMAT)
+#  displayName: 'Fill template with pipeline variables'
 
 #- script: |
 #    NODENAME=$(cat ./result.$(FORMAT) | grep "^name=" | cut -d'=' -f2)
