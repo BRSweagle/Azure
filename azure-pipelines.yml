@@ -36,7 +36,13 @@ steps:
     SWEAGLE_MAPPED_TOKEN: $(SWEAGLE_TOKEN)
 
 - script: 
+    echo .Sweagle API Commands.
     sweagle -h
+
+- script: 
+    echo .GitSync
+    sweagle sweagle gitUpload Azure,GitData -a -n Azure -p
+    sweagle storeSnapshots -n Azure.GitData -d AzureSnapshot 
 
 #- script: |
 #    URL=$(sweagle export $(CDS) --exporter returnValueforKey --argsList $URL_TO_GET --format PROPS)
