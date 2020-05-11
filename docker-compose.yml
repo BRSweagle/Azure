@@ -1,0 +1,82 @@
+version: "3"
+services:
+  sweagle-mongo:
+    image: docker.sweagle.com:8444/sweagle-docker/sweagle-mongo:3.4
+    volumes:
+      - mongo:/data/db
+    networks:
+      stack:
+  sweagle-mysql:
+    image: docker.sweagle.com:8444/sweagle-docker/sweagle-mysql:5.7.25
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      stack:
+  sweagle-elasticsearch:
+    image: docker.sweagle.com:8444/sweagle-docker/sweagle-elasticsearch:6.6.1
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
+    environment:
+      - cluster.name=SWEAGLE_cluster
+      - network.host=0.0.0.0
+      - transport.host=0.0.0.0
+      - xpack.security.enabled=false
+      - discovery.zen.minimum_master_nodes=1
+    networks:
+      stack:
+  sweagle-nginx:
+    image: docker.sweagle.com:8444/sweagle-docker/sweagle-nginx:3.3.0
+    depends_on: ['sweagle-core']
+    
+    #volumes:
+    #  - /path/to/ssl.conf:/etc/nginx/conf.d
+    #  - /path/to/folder/containing/certificates:/path/to/folder/containing/certificates/specified/in/ssl.conf
+    ports:
+      - 80:80
+    #  - 443:443
+    networks:
+      stack:
+  sweagle-vault:
+    image: docker.sweagle.com:8444/sweagle-docker/sweagle-vault:1.0.0
+    environment:
+      - VAULT_ADDR=http://sweagle-vault:8200
+    volumes:
+      - vault:/vault
+    networks:
+      stack:
+    depends_on: [ 'sweagle-mysql' ]
+    links:
+      - sweagle-mysql
+  sweagle-core:
+    image: docker.sweagle.com:8444/sweagle-docker/sweagle-core:3.3.0
+    volumes:
+      - vault:/vault
+    depends_on: ['sweagle-mysql', 'sweagle-mongo', 'sweagle-vault', 'sweagle-elasticsearch', 'sweagle-scriptexecutor']
+    environment:
+      - SWEAGLE_LICENSE=/9bc5Rlni+UuFVp5/4TKLlgYlWs5RVScI5iyyMFiooA5JtX4D5BPFmtKuP0Mf4NAtX1cziCD6nIg6drP0ys4+xInJ8U0xLylgH/cv35A94ukPN6VOllS087EX6azMXQVfaXf0Ge0N/fkWnRW6jq/qQ0Bkdvdpw3RNNNHz7AyH1/lf9QZUl3+sx/PI/IPrhc2dTBXC8wqOozCfcmJWtdL9RrQU9Ue4fwZh8siwuBKc2JlXnyorzEk4SDfR0yD29gbjUJ2WSNcXIvn89WyC7n7KB788qd9Gw8qj9hsQHQCvemFvuevpg63CdmDllnHJMbyf/ijBz0fQvTC0X4Z8673b0nP7SU97OjKbboSQl+7/axLFa+Mw6lE60+x7nO8MSp0zZVpbtUw6Sjv+bZTX9uPJPFzCseOw7FtOz6M15xtucPWE8KJaJmHIvGXFK9YReQ/1jjGoE84yqlkLHynrHQiqiEFi4QO1rmdHMZ7KYXtOrcrvhbU8uJ+7sOf2oEAXBWegkYmBu7kD+0IonP0mqjKpsv/a860+Ef7CETycASWTmSk5lCLSG73RjnfmK1OyH/ZisNyd+0oNSJqbHcnXXfLYRDJBgQnWW0E3rcYXUl4e1yvPoxuSKZMAjx1y+7Y+MWrOpeB5te1v5w=
+    links:
+      - sweagle-mysql
+      - sweagle-mongo
+      - sweagle-vault
+      - sweagle-elasticsearch
+      - sweagle-scriptexecutor
+    networks:
+      stack:
+  sweagle-scriptexecutor:
+    image: docker.sweagle.com:8444/sweagle-docker/sweagle-scriptexecutor:3.3.0
+    networks:
+      stack:
+  sweagle-taskrunner:
+    image: docker.sweagle.com:8444/sweagle-docker/sweagle-taskrunner:1.0.0
+    depends_on: ['sweagle-core']
+    links:
+      - sweagle-core
+    networks:
+      stack:
+networks:
+  stack:
+volumes:
+  elasticsearch:
+  vault:
+  mysql:
+  mongo:
