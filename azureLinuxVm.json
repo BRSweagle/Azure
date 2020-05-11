@@ -3,7 +3,7 @@
     "outputs": {
       "adminUsername": {
         "type": "string",
-        "value": "[parameters('Admin2')]"
+        "value": "[parameters('TestAdmin')]"
       }
     },
     "parameters": {
