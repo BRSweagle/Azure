@@ -36,8 +36,8 @@ steps:
     SWEAGLE_MAPPED_TOKEN: $(SWEAGLE_TOKEN)
 
 - script: 
-    echo .Sweagle API Commands.
-    ./sweagle -h
+    echo "Sweagle API Commands"
+    sweagle -h
   displayName: 'Call SWEAGLE to get available commands'
 
 
