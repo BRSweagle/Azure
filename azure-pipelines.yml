@@ -35,8 +35,12 @@ steps:
   env:
     SWEAGLE_MAPPED_TOKEN: $(SWEAGLE_TOKEN)
 
-- script: sweagle getAllCDS -v -s -p
 - script: sweagle -h
+  displayName: 'Sweagle Commands that are available'
+- script: sweagle getAllCDS -v -s -p
+  displayName: 'Check CDS Statuses'
+- script: sweagle gitUpload Azure,GitData -a -n Azure -p
+  displayName: 'Sync Data between Git Repo'
 
 #- script: |
 #    URL=$(sweagle export $(CDS) --exporter returnValueforKey --argsList $URL_TO_GET --format PROPS)
