@@ -36,10 +36,10 @@ steps:
     SWEAGLE_MAPPED_TOKEN: $(SWEAGLE_TOKEN)
 
 - script: 
-    sweagle -h
-    sweagle getAllCDS -v -s -p
+    - sweagle -h
+    - sweagle getAllCDS -v -s -p
 #    sweagle gitUpload Azure,GitData -n -a Azure -p 
-  displayName: 'Call SWEAGLE to get available commands'
+displayName: 'Call SWEAGLE to get available commands'
 
 #- script: |
 #    URL=$(sweagle export $(CDS) --exporter returnValueforKey --argsList $URL_TO_GET --format PROPS)
