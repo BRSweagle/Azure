@@ -37,7 +37,7 @@ steps:
 
 - script: 
     echo .Sweagle API Commands.
-    sweagle -h
+    ./sweagle -h
   displayName: 'Call SWEAGLE to get available commands'
 
 
