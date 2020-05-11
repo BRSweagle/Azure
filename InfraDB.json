@@ -1,11 +1,11 @@
 {
   "name": "Database Cluster",
-  "version": "1.0",
+  "version": "2.0",
   "description": "A full, master DB and master slave deployment",
   "environment": "PRD",
   "Database Cluster": {
     "EMIDB": {
-      "name": "Emily DB",
+      "name": "Maria DB",
       "description": "This node will host the Master DB",
       "provider": "Rackspace",
       "version": "1.0",
