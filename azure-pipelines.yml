@@ -35,9 +35,9 @@ steps:
   env:
     SWEAGLE_MAPPED_TOKEN: $(SWEAGLE_TOKEN)
 
-- script: 
-    - sweagle -h
-    - sweagle getAllCDS -v -s -p
+- script:
+  target: sweagle -h
+  target: sweagle getAllCDS -v -s -p
 #    sweagle gitUpload Azure,GitData -n -a Azure -p 
 displayName: 'Call SWEAGLE to get available commands'
 
