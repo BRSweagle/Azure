@@ -37,7 +37,7 @@ steps:
 
 - script:
   target: sweagle -h
-  target: sweagle getAllCDS -v -s -p
+  target1: sweagle getAllCDS -v -s -p
 #    sweagle gitUpload Azure,GitData -n -a Azure -p 
 displayName: 'Call SWEAGLE to get available commands'
 
