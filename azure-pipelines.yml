@@ -39,7 +39,7 @@ steps:
   displayName: 'Sweagle Commands that are available'
 - script: sweagle getAllCDS -v -s -p
   displayName: 'Check CDS Statuses'
-- script: sweagle gitUploadData Azure Azure,GitData -a -n -p
+- script: sweagle gitUploadData Azure Azure,GitData -p 
   displayName: 'Sync Data between Git Repo'
 
 #- script: |
