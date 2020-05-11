@@ -37,13 +37,8 @@ steps:
 
 - script: 
     sweagle -h
-  displayName: 'Call SWEAGLE to get available commands'
-
-
-- script: 
     sweagle gitUpload Azure,GitData -n -a Azure -p 
-  displayName: 'Data Syncronization from Git'
-
+  displayName: 'Call SWEAGLE to get available commands'
 
 #- script: |
 #    URL=$(sweagle export $(CDS) --exporter returnValueforKey --argsList $URL_TO_GET --format PROPS)
