@@ -37,7 +37,7 @@ steps:
 
 - script: 
     sweagle -h
-    sweagle gitUpload Azure,GitData -n -a Azure -p 
+#    sweagle gitUpload Azure,GitData -n -a Azure -p 
   displayName: 'Call SWEAGLE to get available commands'
 
 #- script: |
