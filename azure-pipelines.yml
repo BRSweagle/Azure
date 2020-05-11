@@ -40,7 +40,7 @@ steps:
     sweagle -h
 
 - script: 
-    echo .GitSync
+    echo .GitSync.
     sweagle sweagle gitUpload Azure,GitData -a -n Azure -p
     sweagle storeSnapshots -n Azure.GitData -d AzureSnapshot 
 
