@@ -41,7 +41,7 @@ steps:
 
 
 - script: 
-    sweagle gitUpload Azure,GitData -n -a Azure -p
+    sweagle gitUpload Azure,GitData -n -a Azure -p 
   displayName: 'Data Syncronization from Git'
 
 
