@@ -39,7 +39,7 @@ steps:
   displayName: 'Sweagle Commands that are available'
 - script: sweagle getAllCDS -v -s -p
   displayName: 'Check CDS Statuses'
-- script: sweagle gitUploadData Azure Azure,GitData -p -a
+- script: sweagle gitUploadData Azure --nodePath Azure,GitData --pretty --autoApprove
   displayName: 'Sync Data between Git Repo'
 - script: sweagle storeSnapshots --configdatasetName GitData --snapshotTag $(Build.BuildNumber) --level error
 
