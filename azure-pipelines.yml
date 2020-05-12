@@ -41,7 +41,7 @@ steps:
   displayName: 'Check CDS Statuses'
 - script: sweagle gitUploadData Azure Azure,GitData -p -a
   displayName: 'Sync Data between Git Repo'
--script: sweagle storeSnapshots --configdatasetName GitData --snapshotTag $(Build.BuildNumber) --level error
+- script: sweagle storeSnapshots --configdatasetName GitData --snapshotTag $(Build.BuildNumber) --level error
 
 
 
