@@ -1,6 +1,6 @@
 {
   "name": "Database Cluster",
-  "version": "4.0",
+  "version": "5.0",
   "description": "A full, master DB and master slave deployment",
   "environment": "PRD",
   "Database Cluster": {
