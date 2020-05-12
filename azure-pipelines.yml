@@ -41,6 +41,8 @@ steps:
   displayName: 'Check CDS Statuses'
 - script: sweagle gitUploadData Azure --nodePath Azure,GitData --pretty --autoApprove
   displayName: 'Sync Data between Git Repo'
+- script: sweagle validate Azure.GitData -v NoHTTP -p
+  displayName: 'Validate Config'
 - script: sweagle storeSnapshots --configdatasetName Azure.GitData --snapshotTag $(Build.BuildNumber) --level error
   displayName: 'Snapshot Latest Config'
 
