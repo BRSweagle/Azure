@@ -9,6 +9,7 @@
       "description": "This node will host the Master DB",
       "provider": "Rackspace",
       "version": "1.0",
+      "URL": "http://host.name.8080//",
       "host": "prd-lv-1",
       "size": "202",
       "zone": "Slv",
