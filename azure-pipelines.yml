@@ -42,9 +42,9 @@ steps:
 - script: sweagle gitUploadData Azure Azure,GitData -p -a
   displayName: 'Sync Data between Git Repo'
 - script: sweagle validate Eldorado.PRD -v Password checker -p
-  displayname: 'ValidateConfigData Security'
+  displayName: 'ValidateConfigData Security'
 - script: sweagle validate Eldorado.PRD -v NoHTTP -p
-  displayname: 'ValidateConfigData Quallity'
+  displayName: 'ValidateConfigData Quallity'
 
 #- script: |
 #    URL=$(sweagle export $(CDS) --exporter returnValueforKey --argsList $URL_TO_GET --format PROPS)
