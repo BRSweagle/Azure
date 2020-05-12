@@ -41,8 +41,13 @@ steps:
   displayName: 'Check CDS Statuses'
 - script: sweagle gitUploadData Azure Azure,GitData -p -a
   displayName: 'Sync Data between Git Repo'
-- script: curl -X POST \ https://testing.sweagle.com//api/v1/tenant/metadata-parser/validate -H "Authorization: bearer 783d4f5b-c260-4cce-936e-00d2483875ab" -d "mds=Eldorado.PRD&parser=NoHTTP"
 
+- task: InvokeRESTAPI@1
+  inputs:
+    connectionType: 'connectedServiceName'
+    method: 'POST'
+    headers: 'curl -X POST \ https://testing.sweagle.com//api/v1/tenant/metadata-parser/validate -H "Authorization: bearer 783d4f5b-c260-4cce-936e-00d2483875ab" -d "mds=Eldorado.PRD&parser=NoHTTP"'
+    waitForCompletion: 'false'
 
 #- script: |
 #    URL=$(sweagle export $(CDS) --exporter returnValueforKey --argsList $URL_TO_GET --format PROPS)
