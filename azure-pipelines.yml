@@ -42,7 +42,7 @@ steps:
 - script: sweagle gitUploadData Azure --nodePath Azure,GitData --pretty --autoApprove
   displayName: 'Sync Data between Git Repo'
 - script: sweagle storeSnapshots --configdatasetName Azure.GitData --snapshotTag $(Build.BuildNumber) --level error
-
+  displayName: 'Snapshot Latest Config'
 
 
 #- script: |
