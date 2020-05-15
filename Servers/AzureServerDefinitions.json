@@ -1,8 +1,8 @@
 {
-  "AWSserverTemplates": {
-    "AWS-CloudFront": {
+  "serverTemplates": {
+    "-CloudFront": {
       "EMEA-Deployment": {
-        "Bucket": "newlogs.s3.amazonaws.co.UK",
+        "Bucket": "newlogs.s3.amazon.co.UK",
         "IncludeCookies": "true",
         "Prefix": "myprefix",
         "region": "uk-dr1"
@@ -39,7 +39,7 @@
                 "ViewerProtocolPolicy": "allow-all"
               },
               "Logging": {
-                "Bucket": "mylogs.s3.amazonaws.com",
+                "Bucket": "mylogs.s3.amazon.com",
                 "IncludeCookies": "false",
                 "Prefix": "myprefix"
               },
@@ -48,7 +48,7 @@
                   "S3OriginConfig": {
                     "OriginAccessIdentity": "origin-access-identity/cloudfront/E127EXAMPLE51Z"
                   },
-                  "DomainName": "mybucket.s3.amazonaws.com",
+                  "DomainName": "mybucket.s3.amazon.com",
                   "Id": "myS3Origin"
                 }
               },
@@ -70,18 +70,18 @@
               "PriceClass": "PriceClass_200"
             }
           },
-          "Type": "AWS::CloudFront::Distribution"
+          "Type": "::CloudFront::Distribution"
         }
       },
       "US-Deployment": {
-        "Bucket": "mylogs.s3.amazonaws.com",
+        "Bucket": "mylogs.s3.amazon.com",
         "IncludeCookies": "false",
         "Prefix": "myprefix",
         "region": "us-north-1"
       },
-      "AWSTempAWlateFormatVersion": "2010-09-09"
+      "TempAWlateFormatVersion": "2010-09-09"
     },
-    "AWS-EC2-InstanceCatalogue": {
+    "-EC2-InstanceCatalogue": {
       "medium": {
         "instancetype": "t2.medium"
       },
@@ -99,15 +99,15 @@
       "x-large": {
         "instancetype": "t2.x-large"
       },
-      "description": "aws-base-image",
+      "description": "-base-image",
       "region": "EMEA",
-      "type": "AWS::EC2::Instance",
+      "type": "::EC2::Instance",
       "imageid": "ami-fsdgas",
       "volumesize": "50",
       "size": "0.5",
       "instancetype": "t2.micro"
     },
-    "AWS-ECS": {
+    "-ECS": {
       "Base-ECS-Deployment": {
         "AsgMaxSize": {
           "Default": "2",
@@ -141,7 +141,7 @@
         },
         "KeyName": {
           "Description": "Name of an existing EC2 key pair to enable SSH access to the ECS instances",
-          "Type": "AWS::EC2::KeyPair::KeyName"
+          "Type": "::EC2::KeyPair::KeyName"
         },
         "MountPoint": {
           "Default": "myEFSvolume",
@@ -165,12 +165,12 @@
           "Type": "String"
         }
       },
-      "AWSTemplateFormatVersion": "2010-09-09",
-      "Description": "This template creates an Amazon EFS file system and mount target and associates it with Amazon EC2 instances in an Auto Scaling group. **WARNING** This template creates Amazon EC2 instances and related resources. You will be billed for the AWS resources used if you create a stack from this template."
+      "TemplateFormatVersion": "2010-09-09",
+      "Description": "This template creates an Amazon EFS file system and mount target and associates it with Amazon EC2 instances in an Auto Scaling group. **WARNING** This template creates Amazon EC2 instances and related resources. You will be billed for the  resources used if you create a stack from this template."
     },
-    "AWS-Lambda": {
+    "-Lambda": {
       "Mappings": {
-        "AWSInstanceType2Arch": {
+        "InstanceType2Arch": {
           "m1.small": {
             "Arch": "HVM64"
           },
@@ -178,7 +178,7 @@
             "Arch": "HVM64"
           }
         },
-        "AWSRegionArch2AMI": {
+        "RegionArch2AMI": {
           "ap-northeast-1": {
             "HVM64": "ami-06cd52961ce9f0d85",
             "HVMG2": "ami-053cdd503598e4a9d"
@@ -237,11 +237,11 @@
       },
       "Parameters": {
         "ExistingSecurityGroups": {
-          "Type": "List<AWS::EC2::SecurityGroup::Id>"
+          "Type": "List<::EC2::SecurityGroup::Id>"
         },
         "ExistingVPC": {
           "Description": "The VPC ID that includes the security groups in the ExistingSecurityGroups parameter.",
-          "Type": "AWS::EC2::VPC::Id"
+          "Type": "::EC2::VPC::Id"
         },
         "InstanceType": {
           "AllowedValues": {
@@ -274,7 +274,7 @@
             "Role": "LambdaExecutionRole.Arn",
             "Runtime": "nodejs8.10"
           },
-          "Type": "AWS::Lambda::Function"
+          "Type": "::Lambda::Function"
         },
         "LambdaExecutionRole": {
           "Properties": {
@@ -298,22 +298,22 @@
             },
             "Path": "/"
           },
-          "Type": "AWS::IAM::Role"
+          "Type": "::IAM::Role"
         },
         "MyEC2Instance": {
           "Properties": {
             "ImageId": {
               "Fn::FindInMap": {
                 "null": {
-                  "Ref": "AWS::Region"
+                  "Ref": "::Region"
                 },
-                "AWSRegionArch2AMI": {},
+                "RegionArch2AMI": {},
                 "Fn::FindInMap": {
                   "null": {
                     "Ref": "InstanceType"
                   },
                   "Arch": {},
-                  "AWSInstanceType2Arch": {}
+                  "InstanceType2Arch": {}
                 }
               }
             },
@@ -322,7 +322,7 @@
             },
             "SecurityGroupIds": "AllSecurityGroups.Value"
           },
-          "Type": "AWS::EC2::Instance"
+          "Type": "::EC2::Instance"
         },
         "SecurityGroup": {
           "Properties": {
@@ -347,12 +347,12 @@
             },
             "GroupDescription": "Allow HTTP traffic to the host"
           },
-          "Type": "AWS::EC2::SecurityGroup"
+          "Type": "::EC2::SecurityGroup"
         }
       },
-      "AWSTemplateFormatVersion": "2010-09-09"
+      "TemplateFormatVersion": "2010-09-09"
     },
-    "AWS-OpsWork": {
+    "-OpsWork": {
       "Parameters": {
         "AppName": {
           "AllowedPattern": "[a-zA-Z][a-zA-Z0-9]*",
@@ -366,7 +366,7 @@
         "InstanceRole": {
           "AllowedPattern": "[a-zA-Z][a-zA-Z0-9-]*",
           "ConstraintDescription": "must begin with a letter and contain only alphanumeric characters.",
-          "Default": "aws-opsworks-ec2-role",
+          "Default": "-opsworks-ec2-role",
           "Description": "The OpsWorks instance role",
           "MaxLength": "64",
           "MinLength": "1",
@@ -380,7 +380,7 @@
         "ServiceRole": {
           "AllowedPattern": "[a-zA-Z][a-zA-Z0-9-]*",
           "ConstraintDescription": "must begin with a letter and contain only alphanumeric characters.",
-          "Default": "aws-opsworks-service-role",
+          "Default": "-opsworks-service-role",
           "Description": "The OpsWorks service role",
           "MaxLength": "64",
           "MinLength": "1",
@@ -419,7 +419,7 @@
             "Type": "db-master"
           },
           "DependsOn": "myApp",
-          "Type": "AWS::OpsWorks::Layer"
+          "Type": "::OpsWorks::Layer"
         },
         "ELB": {
           "Properties": {
@@ -442,7 +442,7 @@
               }
             }
           },
-          "Type": "AWS::ElasticLoadBalancing::LoadBalancer"
+          "Type": "::ElasticLoadBalancing::LoadBalancer"
         },
         "ELBAttachment": {
           "Properties": {
@@ -453,7 +453,7 @@
               "Ref": "myLayer"
             }
           },
-          "Type": "AWS::OpsWorks::ElasticLoadBalancerAttachment"
+          "Type": "::OpsWorks::ElasticLoadBalancerAttachment"
         },
         "myApp": {
           "Properties": {
@@ -475,7 +475,7 @@
             },
             "Type": "php"
           },
-          "Type": "AWS::OpsWorks::App"
+          "Type": "::OpsWorks::App"
         },
         "myAppInstance1": {
           "Properties": {
@@ -489,7 +489,7 @@
             },
             "InstanceType": "m1.small"
           },
-          "Type": "AWS::OpsWorks::Instance"
+          "Type": "::OpsWorks::Instance"
         },
         "myAppInstance2": {
           "Properties": {
@@ -503,7 +503,7 @@
             },
             "InstanceType": "m1.small"
           },
-          "Type": "AWS::OpsWorks::Instance"
+          "Type": "::OpsWorks::Instance"
         },
         "myDBInstance": {
           "Properties": {
@@ -517,7 +517,7 @@
             },
             "InstanceType": "m1.small"
           },
-          "Type": "AWS::OpsWorks::Instance"
+          "Type": "::OpsWorks::Instance"
         },
         "myLayer": {
           "Properties": {
@@ -537,7 +537,7 @@
             "Type": "php-app"
           },
           "DependsOn": "myApp",
-          "Type": "AWS::OpsWorks::Layer"
+          "Type": "::OpsWorks::Layer"
         },
         "myStack": {
           "Properties": {
@@ -545,17 +545,17 @@
               "Type": "git",
               "Url": "git://github.com/amazonwebservices/opsworks-example-cookbooks.git"
             },
-            "DefaultInstanceProfileArn": "arn:aws:iam::${AWS::AccountId}:instance-profile/${InstanceRole}",
-            "ServiceRoleArn": "arn:aws:iam::${AWS::AccountId}:role/${ServiceRole}",
+            "DefaultInstanceProfileArn": "arn::iam::${::AccountId}:instance-profile/${InstanceRole}",
+            "ServiceRoleArn": "arn::iam::${::AccountId}:role/${ServiceRole}",
             "UseCustomCookbooks": "true"
           },
-          "Type": "AWS::OpsWorks::Stack"
+          "Type": "::OpsWorks::Stack"
         }
       },
       "OpsWork": "2010-09-09"
     },
-    "AWS-RDS-DB": {
-      "Type": "AWS::RDS::DBInstance",
+    "-RDS-DB": {
+      "Type": "::RDS::DBInstance",
       "Engine": "oracle-ee",
       "MasterUserPassword": "SecretPassword01",
       "AllocatedStorage": "12",
@@ -564,22 +564,22 @@
       "DeletionPolicy": "Snapshot",
       "LicenseModel": "bring-your-own-license"
     },
-    "AWS-S3": {
-      "AWS-S3": "2010-09-09",
+    "-S3": {
+      "-S3": "2010-09-09",
       "IndexDocument": "index.html",
       "Id": "MyPolicy",
       "Bucket": "S3Bucket",
-      "Type": "AWS::S3::BucketPolicy",
+      "Type": "::S3::BucketPolicy",
       "Version": "2012-10-17",
       "AccessControl": "PublicRead",
       "ErrorDocument": "error.html"
     },
-    "AWS-EC2-Instance": {
+    "-EC2-Instance": {
       "region": "EMEA",
       "instancetype": "t2.micr",
       "size": "0.5",
-      "description": "aws-base-image",
-      "type": "AWS::EC2::Instance",
+      "description": "-base-image",
+      "type": "::EC2::Instance",
       "volumesize": "50",
       "imageid": "ami-fsdgas"
     }
