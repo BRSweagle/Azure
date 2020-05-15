@@ -43,11 +43,13 @@ steps:
   displayName: 'Sync Data between Git Repo'
 - script: sweagle validate Azure.GitData -v NoHTTP -p
   displayName: 'Validate Config'
-- script: echo sweagle storeSnapshots --configdatasetName Azure.GitData --snapshotTag $(Build.BuildNumber) --level error
+- script: echo sweagle storeSnapshots --configdatasetName Azure--snapshotTag $(Build.BuildNumber)
   displayName: 'Snapshot Latest Config'
 
-- script: echo sweagle uploadData -f /Users/boondock/Documents/GitHub/Azure/AzureServerDefinitions.json -n Azure,Servers -t JSON -am
-  displayName: 'Machine Learning - Upload & Apply types'
+#- script: echo sweagle uploadData -f /Users/boondock/Documents/GitHub/Azure/Servers/AzureServerDefinitions.json -n Azure,Servers -t JSON -am
+#  displayName: 'Machine Learning - Upload & Apply types'
+
+
 
 #- script: |
 #    URL=$(sweagle export $(CDS) --exporter returnValueforKey --argsList $URL_TO_GET --format PROPS)
