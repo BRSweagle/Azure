@@ -46,7 +46,7 @@ steps:
 - script: echo sweagle storeSnapshots --configdatasetName Azure.GitData --snapshotTag $(Build.BuildNumber) --level error
   displayName: 'Snapshot Latest Config'
 
-- script: echo sweagle uploadData -f /Users/boondock/Documents/GitHub/Azure/AzureServerDefinitions.json -n Azure,Servers -t JSON -a -m
+- script: echo sweagle uploadData -f /Users/boondock/Documents/GitHub/Azure/AzureServerDefinitions.json -n Azure,Servers -t JSON -am
   displayName: 'Machine Learning - Upload & Apply types'
 
 #- script: |
