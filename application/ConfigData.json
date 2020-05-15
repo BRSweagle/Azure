@@ -14,7 +14,7 @@
       "versions": {
         "core2_v_2.123": {
           "artifact.url": "/artifacts/core1/1.0.2/123.jar",
-          "version.latestBuild": "b29",
+          "version.latestBuild": "b30",
           "version.nbr": "1.0.3"
         },
         "artifact.url": "/artifacts/core1/1.0.2/123.jar",
