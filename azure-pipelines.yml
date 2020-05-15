@@ -41,7 +41,7 @@ steps:
   displayName: 'Check CDS Statuses'
 - script: sweagle gitUploadData Azure --nodePath Azure,GitData --pretty --autoApprove
   displayName: 'Sync Data between Git Repo'
-- script: sweagle validate Azure.GitData -v NoHTTP -p
+- script: sweagle validate Azure -v NoHTTP -p
   displayName: 'Validate Config'
 - script: echo sweagle storeSnapshots --configdatasetName Azure--snapshotTag $(Build.BuildNumber)
   displayName: 'Snapshot Latest Config'
@@ -119,4 +119,3 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Deploy new release'#
-
