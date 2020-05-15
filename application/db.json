@@ -1,0 +1,26 @@
+{
+  "user": {
+    "first_name": "briley",
+    "user_type": "API",
+    "token": "30b46f5d635cc868a1b297f808d9764869d6c8b0268cc50ca85f85d1429569db4ddf069c33b5b95fe5c853cc8808d0257f73f28a"
+  },
+  "environment": {
+    "url": "https://testing.sweagle.com/"
+  },
+  "settings": {
+    "friendlyOutput": true,
+    "ignoreSSL": false,
+    "secureStore": true
+  },
+  "gitConfig": {
+    "apiToken": "17b488ea76df736e6f5b57ab8286cfdc54c68f9fa822e227feedd0de8614520811f2c05f1815d23666c5be2eb0053367931120ce21858847",
+    "repoOwner": "BRSweagle",
+    "filteredFiles": [
+      "json",
+      "ini",
+      "properties",
+      "yaml",
+      "yml"
+    ]
+  }
+}
