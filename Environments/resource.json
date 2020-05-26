@@ -2,7 +2,7 @@
   "resource": {
     "aws_instance": {
       "example": {
-        "instance_type": "t2.mini",
+        "instance_type": "t2.Ben",
         "ami": "ami-09ead922c1dad67e4"
       }
     }
