@@ -8,8 +8,8 @@
     "url": "https://testing.sweagle.com/"
   },
   "settings": {
-    "friendlyOutput": true,
-    "ignoreSSL": false,
+    "friendlyOutput": false,
+    "ignoreSSL": true,
     "secureStore": true
   },
   "gitConfig": {
