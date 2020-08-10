@@ -15,7 +15,7 @@ resources:
   containers:
   - container: sweagle-cli
     endpoint: sweagle_docker_registry
-    image: 'sweagle-docker/sweagle-azure-cli:1.0.0'
+    image: 'sweagle-docker/sweagle-azure-cli:1.1.0'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -23,7 +23,7 @@ pool:
 container: 'sweagle-cli'
 # this is if you want to target directly the azure-cli available on docker hub instead of SWEAGLE registry
 #container:
-#  image: 'dsweagle/sweagle-azure-cli:1.0.0'
+#  image: 'dsweagle/sweagle-azure-cli:1.1.0'
 
 steps:
 # you should always configure the CLI before use because temporary folders are created at each pipeline run and db.json must be located there
